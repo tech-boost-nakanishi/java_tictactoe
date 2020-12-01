@@ -1,23 +1,47 @@
 import javax.swing.JFrame;
 
-public class Frame extends JFrame{
-
-	private static final long serialVersionUID = 1L;
+public class Frame {
 	
-	Menu menuPanel;
-	Setting settingPanel;
+	private static JFrame frame;
+	
+	private static Menu menuPanel;
+	private static Setting settingPanel;
+	private static Game gamePanel;
 	
 	public Frame() {
-		this.setTitle("○×ゲーム");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		frame = new JFrame();
+		frame.setTitle("○×ゲーム");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		
 		menuPanel = new Menu();
 		settingPanel = new Setting();
-		this.getContentPane().add(menuPanel);
+		gamePanel = new Game();
+		frame.getContentPane().add(menuPanel);
 		
-		this.pack();
-		this.setVisible(true);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public static void changePanel(String str) {
+		frame.remove(menuPanel);
+		frame.remove(settingPanel);
+		frame.remove(gamePanel);
+		
+		if(str.equals("menuPanel")) {
+			menuPanel = new Menu();
+			frame.getContentPane().add(menuPanel);
+		}
+		else if(str.equals("settingPanel")) {
+			settingPanel = new Setting();
+			frame.getContentPane().add(settingPanel);
+		}
+		else if(str.equals("gamePanel")) {
+			gamePanel = new Game();
+			frame.getContentPane().add(gamePanel);
+		}
+		
+		frame.pack();
 	}
 
 	public static void main(String[] args) {

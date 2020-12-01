@@ -23,7 +23,7 @@ public class Setting extends JPanel implements MouseListener, MouseMotionListene
 	private final int width = 500, height = 300;
 	private Rectangle faRect, saRect, circleRect, xRect, backRect, changeRect;
 	private String hoveredRect = "";
-	private String faorsa, circleorx;
+	public static String faorsa, circleorx;
 	private boolean isChanged = false;
 	
 	
